@@ -21,7 +21,7 @@ export const dbConnection = async () => {
     });
  
     mongoose.connection.on("open", () => {
-      console.log("MongoDB | conectado a la base de datos TRANSMETRO-CONECTA");
+      console.log("MongoDB | conectado a la base de datos TRANSMETRO-CONECTA CLIENTE");
     });
  
     mongoose.connection.on("reconnected", () => {

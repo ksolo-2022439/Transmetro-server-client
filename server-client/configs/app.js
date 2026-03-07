@@ -11,10 +11,8 @@ import { dbConnection } from './db.js';
 
 //Rutas
 //EJEMPLO: import accountRoutes from '../src/accounts/account.routes.js';
-import roadRoutes from '../src/roads/road.routes.js';
-import stationRoutes from '../src/stations/station.routes.js';
 
-const BASE_URL = '/TRANSMETRO-CONECTA/v1';
+const BASE_URL = '/TRANSMETRO-CONECTA-CLIENTE/v1';
 
 //Configuración de mi aplicación
 const middlewares = (app) => {
@@ -28,8 +26,6 @@ const middlewares = (app) => {
 //Integracion de todas las rutas
 const routes = (app) => {
     //EJEMPLO: app.use(`${BASE_URL}/accounts`, accountRoutes);
-    app.use(`${BASE_URL}/roads`, roadRoutes);
-    app.use(`${BASE_URL}/stations`, stationRoutes);
 }
 
 //FUNCIÓN PARA INICIAR EL SERVIDOR
@@ -54,7 +50,7 @@ const initServer = async () => {
         app.get(`${BASE_URL}/health`, (req, res) => {
             res.status(200).json({
                 status: 'ok',
-                service: 'TRANSMETRO-CONECTA Admin',
+                service: 'TRANSMETRO-CONECTA Cliente',
                 version: '1.0.0'
             });
         });
