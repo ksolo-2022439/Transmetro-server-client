@@ -10,8 +10,7 @@ export const validateJWT = (req, res, next) => {
     }
 
     try {
-        // IMPORTANTE: El server-client debe tener en su .env la misma SECRETORPRIVATEKEY que usó el auth-server
-        const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         // EXTRAER EL ID DEL USUARIO:
         // Soportamos el estándar Node ('uid', 'sub') y el estándar .NET ('nameidentifier')
