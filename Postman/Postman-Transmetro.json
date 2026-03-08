@@ -733,7 +733,7 @@
           "name": "Viajes (Tours)",
           "item": [
             {
-              "name": "Pagar Viaje / Descontar Saldo",
+              "name": "Planear y Pagar Viaje",
               "request": {
                 "method": "POST",
                 "header": [
@@ -749,20 +749,19 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"userId\": \"{{user_id}}\",\n  \"serviceType\": \"NORMAL\"\n}"
+                  "raw": "{\n  \"userId\": \"{{user_id}}\",\n  \"originLat\": 14.634915,\n  \"originLon\": -90.532818,\n  \"destLat\": 14.610500,\n  \"destLon\": -90.525000\n}"
                 },
                 "url": {
-                  "raw": "{{baseUrlClient}}/tours/pay",
+                  "raw": "{{baseUrlClient}}/tours/plan",
                   "host": [
                     "{{baseUrlClient}}"
                   ],
                   "path": [
                     "tours",
-                    "pay"
+                    "plan"
                   ]
                 }
-              },
-              "response": []
+              }
             }
           ]
         }
