@@ -1,13 +1,17 @@
 import { body } from 'express-validator';
-import { checkValidators } from './check-validators';
+import { checkValidators } from './check-validators.js';
+import { userHasActiveWallet } from './data-validators.js';
 
-export const getBalanceValidator =[
+export const getBalanceValidator = [
     body('userId', 'El ID de usuario es obligatorio').notEmpty().isString(),
+    body('userId').custom(userHasActiveWallet),
     checkValidators
 ];
 
 export const rechargeWalletValidator = [
     body('userId', 'El ID de usuario es obligatorio').notEmpty().isString(),
+    body('userId').custom(userHasActiveWallet),
+
     body('monto')
         .exists().withMessage('El monto a recargar es obligatorio.')
         .isNumeric().withMessage('El monto debe ser un valor numérico.')

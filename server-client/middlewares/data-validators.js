@@ -1,4 +1,4 @@
-import Wallet from '../src/wallets/wallet.model';
+import Wallet from '../src/wallets/wallet.model.js';
 
 export const userHasActiveWallet = async (userId) => {
     if (!userId) return;

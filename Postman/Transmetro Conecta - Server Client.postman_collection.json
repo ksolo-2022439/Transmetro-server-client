@@ -1,0 +1,127 @@
+{
+  "info": {
+    "_postman_id": "3c0a7d64-d251-4c7b-bfe7-eb30b5f2e48c",
+    "name": "Transmetro Conecta - Server Client",
+    "description": "Colección de solicitudes para el proyecto Transmetro Conecta.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48421810",
+    "_collection_link": "https://go.postman.co/collection/48421810-3c0a7d64-d251-4c7b-bfe7-eb30b5f2e48c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "General",
+      "item": [
+        {
+          "name": "Health check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Verifica que el servidor esté en funcionamiento."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tours",
+      "item": [
+        {
+          "name": "Planificar Recorrido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Token",
+                "value": "{{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"2a1eaa6f-c6c1-4bb5-acad-bdf74e8e6c73\",\n  \"originLat\": 14.6349,\n  \"originLon\": -90.5069,\n  \"destLat\": 14.5984,\n  \"destLon\": -90.5063\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tours/plan",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tours",
+                "plan"
+              ]
+            },
+            "description": "Planifica un nuevo recorrido o viaje. \n\n**Cuerpo JSON esperado:**\n- `userId`: String (ID del usuario, debe tener una billetera activa)\n- `originLat`: Number (Latitud de origen entre -90 y 90)\n- `originLon`: Number (Longitud de origen entre -180 y 180)\n- `destLat`: Number (Latitud de destino entre -90 y 90)\n- `destLon`: Number (Longitud de destino entre -180 y 180)"
+          },
+          "response": []
+        }
+      ],
+      "description": "Peticiones relacionadas con la entidad Tours."
+    },
+    {
+      "name": "Wallets",
+      "item": [
+        {
+          "name": "Obtener Balance",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\": \"{{user_id}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/wallets/balance",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "wallets",
+                "balance"
+              ]
+            },
+            "description": "Obtiene el saldo disponible en la billetera del usuario.\n\n**Cuerpo JSON esperado:**\n- `userId`: String (ID del usuario)"
+          },
+          "response": []
+        }
+      ],
+      "description": "Peticiones relacionadas con la entidad Wallets (Billeteras)."
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3002/TRANSMETRO-CONECTA-CLIENTE/v1"
+    }
+  ]
+}

@@ -11,6 +11,8 @@ import { dbConnection } from './db.js';
 
 //Rutas
 //EJEMPLO: import accountRoutes from '../src/accounts/account.routes.js';
+import tourRoutes from '../src/tours/tour.routes.js';
+import walletRoutes from '../src/wallets/wallet.routes.js';
 
 const BASE_URL = '/TRANSMETRO-CONECTA-CLIENTE/v1';
 
@@ -26,6 +28,8 @@ const middlewares = (app) => {
 //Integracion de todas las rutas
 const routes = (app) => {
     //EJEMPLO: app.use(`${BASE_URL}/accounts`, accountRoutes);
+    app.use(`${BASE_URL}/tours`, tourRoutes);
+    app.use(`${BASE_URL}/wallets`, walletRoutes);
 }
 
 //FUNCIÓN PARA INICIAR EL SERVIDOR
